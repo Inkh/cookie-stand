@@ -1,0 +1,16 @@
+body {
+  vertical-align: top;
+  font-family: sans-serif;
+  background-color: rgb(197, 194, 194);
+}
+
+ul { 
+  list-style-type: disc; 
+  list-style-position: outside; 
+  margin-left: 50px;
+}
+
+h2 {
+  font-size: 24px;
+  margin: 10px 10px 10px 0px;
+}
