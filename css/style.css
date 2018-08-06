@@ -7,10 +7,18 @@ body {
 ul { 
   list-style-type: disc; 
   list-style-position: outside; 
-  margin-left: 50px;
+  margin-left: 70px;
 }
 
 h2 {
   font-size: 24px;
-  margin: 10px 10px 10px 0px;
+  margin: 10px;
+}
+
+.wrapper {
+  width: 90%;
+  background-color: rgb(243, 243, 243);
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 10px;
 }

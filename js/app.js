@@ -32,16 +32,18 @@ function generateSale(){
 
 //Displays a list of sales by the hour
 function displaySale(){
-  var ul = document.getElementById('main');
+  var content = document.getElementById('main');
+  var ul = document.createElement('ul');
   var header = document.createElement('h2');
   var headerText = document.createTextNode(this.location);
   header.append(headerText);
-  ul.append(header);
+  content.append(header);
   for(var i = 0;i < this.generateSale().length;i++){
     var hourlySale = document.createElement('li');
     var text = document.createTextNode(this.generateSale()[i]);
     hourlySale.append(text);
     ul.append(hourlySale);
+    content.append(ul);
   }
 }
 
@@ -94,8 +96,6 @@ var alkiShop = {
   generateSale: generateSale,
   dailySale: displaySale
 };
-
-// document.getElementById('main').textContent = pikeShop.dailySale();
 
 pikeShop.dailySale();
 seaShop.dailySale();
