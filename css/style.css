@@ -1,8 +1,9 @@
 body {
   vertical-align: top;
   font-family: sans-serif;
-  background-color: rgb(197, 194, 194);
+  /* background-color: rgb(197, 194, 194); */
   min-width:1000px;
+  background: repeating-linear-gradient(45deg, #eb8e59, #eb8e59 43px, #eeeeee 43px, #eeeeee 50px);
 }
 
 ul { 
@@ -27,6 +28,7 @@ li {
   box-sizing: border-box;
   padding: 10px;
   box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.2);
+  height: 900px;
 }
 
 .salmon {
@@ -40,10 +42,11 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: rgb(168, 93, 93);
+  /* background-color: #e4964e; */
+  background-color: #37944b;
   height: 80px;
   margin-bottom: 10px;
-  box-shadow: 0 4px 5px rgb(187, 187, 187);
+  box-shadow: 0 4px 5px #eeeeee;
 }
 
 tr:nth-child(even) {
