@@ -2,10 +2,20 @@
 
 console.log('linked');
 
+//Constructor method for Cookie Shop
+function CookieShop(location, averageCookieSale, minCustomerHourly,maxCustomerHourly){
+  this.location = location;
+  this.averageCookieSale = averageCookieSale;
+  this.minCustomerHourly = minCustomerHourly;
+  this.maxCustomerHourly = maxCustomerHourly;
+}
+
 //Generates random customer visited by the hour.
 function randomCustomer(){
   return Math.floor(Math.random() * (this.maxCustomerHourly - this.minCustomerHourly)) + this.minCustomerHourly;
 }
+
+CookieShop.prototype.averageCustomerHourly = randomCustomer;
 
 //Cookie sale generation by the hour.
 function generateSale(){
@@ -13,7 +23,7 @@ function generateSale(){
   var salesSheet = [];
   var hour = 6;
   for (var i = 0; i < 15;i++){
-    var cookiesSold = Math.ceil(this.averageCustomerHourly() * this.avgCookieSale);
+    var cookiesSold = Math.ceil(this.averageCustomerHourly() * this.averageCookieSale);
     if (hour < 12){
       salesSheet.push(`${hour}am: ${cookiesSold}`);
     } else{
@@ -29,6 +39,8 @@ function generateSale(){
   salesSheet.push(`Total: ${total}`);
   return salesSheet;
 }
+
+CookieShop.prototype.generateSale = generateSale;
 
 //Displays a list of sales by the hour
 function displaySale(){
@@ -47,58 +59,16 @@ function displaySale(){
   }
 }
 
-var pikeShop = {
-  location: '1st and Pike',
-  avgCookieSale: 6.3,
-  minCustomerHourly: 23,
-  maxCustomerHourly: 87,
-  averageCustomerHourly: randomCustomer,
-  generateSale: generateSale,
-  dailySale: displaySale
-};
+CookieShop.prototype.displaySale = displaySale;
 
-var seaShop = {
-  location: 'SeaTac Airport',
-  avgCookieSale: 1.2,
-  minCustomerHourly: 3,
-  maxCustomerHourly: 24,
-  averageCustomerHourly: randomCustomer,
-  generateSale: generateSale,
-  dailySale: displaySale
-};
+var pikeShop = new CookieShop('1st and Pike', 6.3, 23, 87);
+var seaShop = new CookieShop('SeaTac Airport', 1.2, 3, 24);
+var seattleShop = new CookieShop('Seattle Center', 3.7, 11, 38);
+var capitolShop = new CookieShop('Capitol Hill', 2.3, 20, 38);
+var alkiShop = new CookieShop('Alki', 4.6, 2, 16);
 
-var seattleShop = {
-  location: 'Seattle Center',
-  avgCookieSale: 3.7,
-  minCustomerHourly: 11,
-  maxCustomerHourly: 38,
-  averageCustomerHourly: randomCustomer,
-  generateSale: generateSale,
-  dailySale: displaySale
-};
-
-var capitolShop = {
-  location: 'Capitol Hill',
-  avgCookieSale: 2.3,
-  minCustomerHourly: 20,
-  maxCustomerHourly: 38,
-  averageCustomerHourly: randomCustomer,
-  generateSale: generateSale,
-  dailySale: displaySale
-};
-
-var alkiShop = {
-  location: 'Alki',
-  avgCookieSale: 4.6,
-  minCustomerHourly: 2,
-  maxCustomerHourly: 16,
-  averageCustomerHourly: randomCustomer,
-  generateSale: generateSale,
-  dailySale: displaySale
-};
-
-pikeShop.dailySale();
-seaShop.dailySale();
-seattleShop.dailySale();
-capitolShop.dailySale();
-alkiShop.dailySale();
+pikeShop.displaySale();
+seaShop.displaySale();
+seattleShop.displaySale();
+capitolShop.displaySale();
+alkiShop.displaySale();
