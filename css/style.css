@@ -2,6 +2,7 @@ body {
   vertical-align: top;
   font-family: sans-serif;
   background-color: rgb(197, 194, 194);
+  min-width:1000px;
 }
 
 ul { 
@@ -20,7 +21,7 @@ li {
 }
 
 .wrapper {
-  width: 90%;
+  width: 95%;
   background-color: rgb(243, 243, 243);
   margin: 80px auto 0 auto;
   box-sizing: border-box;
@@ -43,4 +44,26 @@ nav {
   height: 80px;
   margin-bottom: 10px;
   box-shadow: 0 4px 5px rgb(187, 187, 187);
+}
+
+tr:nth-child(even) {
+  background-color: #dadada;
+}
+
+td, th {
+  border: 1px solid #dadada;
+  text-align: left;
+  padding: 8px;
+  width: 70px;
+}
+
+th {
+  font-weight: bold;
+}
+
+table {
+  max-width: 100%;
+  word-break: normal;
+  word-wrap: break-word;
+  table-layout: fixed;
 }
