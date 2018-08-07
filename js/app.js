@@ -17,45 +17,46 @@ function randomCustomer(){
 
 CookieShop.prototype.averageCustomerHourly = randomCustomer;
 
-//Cookie sale generation by the hour.
 function generateSale(){
   var total = 0;
-  var salesSheet = [];
-  var hour = 6;
+  var salesSheet = [this.location];
   for (var i = 0; i < 15;i++){
     var cookiesSold = Math.ceil(this.averageCustomerHourly() * this.averageCookieSale);
-    if (hour < 12){
-      salesSheet.push(`${hour}am: ${cookiesSold}`);
-    } else{
-      if (hour === 12){
-        salesSheet.push(`${hour}pm: ${cookiesSold}`);
-      } else{
-        salesSheet.push(`${hour - 12}pm: ${cookiesSold}`);
-      }
-    }
+    salesSheet.push(cookiesSold);
     total += cookiesSold;
-    hour++;
   }
-  salesSheet.push(`Total: ${total}`);
+  salesSheet.push(total);
   return salesSheet;
 }
 
 CookieShop.prototype.generateSale = generateSale;
 
-//Displays a list of sales by the hour
+
+// Creates basic table template.
+var content = document.getElementById('main');
+var table = document.createElement('table');
+
+function tableCreate(){
+  var dailyHours = ['', '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', 'Daily Location Total'];
+  content.append(table);
+  var headerRow = document.createElement('tr');
+  for(var j = 0;j < dailyHours.length; j++){
+    var currHour = document.createElement('th');
+    var text = document.createTextNode(dailyHours[j]);
+    currHour.append(text);
+    headerRow.append(currHour);
+    table.append(headerRow);
+  }
+}
+
 function displaySale(){
-  var content = document.getElementById('main');
-  var ul = document.createElement('ul');
-  var header = document.createElement('h2');
-  var headerText = document.createTextNode(this.location);
-  header.append(headerText);
-  content.append(header);
-  for(var i = 0;i < this.generateSale().length;i++){
-    var hourlySale = document.createElement('li');
+  var row = document.createElement('tr');
+  for(var i = 0; i < this.generateSale().length;i++){
+    var hourlySale = document.createElement('td');
     var text = document.createTextNode(this.generateSale()[i]);
     hourlySale.append(text);
-    ul.append(hourlySale);
-    content.append(ul);
+    row.append(hourlySale);
+    table.append(row);
   }
 }
 
@@ -67,6 +68,7 @@ var seattleShop = new CookieShop('Seattle Center', 3.7, 11, 38);
 var capitolShop = new CookieShop('Capitol Hill', 2.3, 20, 38);
 var alkiShop = new CookieShop('Alki', 4.6, 2, 16);
 
+tableCreate();
 pikeShop.displaySale();
 seaShop.displaySale();
 seattleShop.displaySale();
