@@ -92,11 +92,12 @@ alkiShop.currSale = alkiShop.displaySale();
 
 //Array of generated lists
 var salesListArray = [pikeShop.currSale, seaShop.currSale, seattleShop.currSale, capitolShop.currSale, alkiShop.currSale];
+var footer = document.createElement('tfoot');
 
 //Creates footer row for sales table
 function tableFooter(){
+  console.log('appending');
   var row = document.createElement('tr');
-  var footer = document.createElement('tfoot');
   footer.append(row);
   var totalList = ['Total'];
 
@@ -117,6 +118,7 @@ function tableFooter(){
   table.append(footer);
   // return totalList;
 }
+
 tableFooter();
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -202,9 +204,16 @@ form.addEventListener('submit', function(e){
   e.preventDefault();
   var newShop = new CookieShop(e.target.location.value, Number(e.target.sale.value), Number(e.target.min.value), Number(e.target.max.value));
   newShop.currSale = newShop.displaySale();
-  console.log(newShop);
+
   salesListArray.push(newShop.currSale);
   newShop.displayRoster();
+
+  //Remove previous total footer row childs completely
+  while (footer.firstChild){
+    footer.removeChild(footer.firstChild);
+  }
+
+  //Re-add updated footer
   tableFooter();
 });
 
