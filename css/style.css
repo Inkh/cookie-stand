@@ -17,6 +17,13 @@ h2 {
   margin: 10px 5px;
 }
 
+h3 {
+  font-size: 18px;
+  margin: 10px 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
 li {
   margin: 5px;
 }
@@ -72,4 +79,47 @@ table {
   word-break: normal;
   word-wrap: break-word;
   table-layout: fixed;
+}
+
+fieldset{
+  margin: 10px auto;
+  width: 55%;
+  height: auto;
+  background-color: #c0bfbf;
+  border: 2px solid #e0dfdf
+}
+
+label{
+  float: left;
+  clear: left;
+  text-align: right;
+  width: 250px;
+  margin: 14px;
+}
+
+input{
+  float:left;
+  margin: 10px;
+  width: 200px;
+  height: 20px;
+}
+
+.subButton{
+  float: none;
+  color: #eeeeee;
+  margin: 10px auto;
+  border: none;
+  background-color: #43a046;
+  height: 50px;
+  font-size: 24px;
+}
+
+.subButton:hover{
+  background-color: #46ac4a;
+  cursor: pointer;
+  box-shadow: 0 1px 2px #777777;
+}
+
+.submitField{
+  text-align: center;
 }

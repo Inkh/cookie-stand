@@ -17,24 +17,26 @@
 
     <form id="shopCreate">
       <fieldset>
+        <h3>Add to your Franchise!</h3>
         <div>
-          <label for="location">Location</label>
+          <label for="location">Location: </label>
           <input id="location" type="text" name="location" required>
         </div>
         <div>
-          <label for="avgSale">Average Cookie Sale</label>
+          <label for="avgSale">Average Cookie Sale: </label>
           <input id="avgSale" type="number" name="sale" step="0.1">
         </div>
         <div>
-          <label for="minCust">Minimum Customer / Hour</label>
+          <label for="minCust">Minimum Customer / Hour: </label>
           <input id="minCust" type="number" name="min" required>
         </div>
         <div>
-          <label for="maxCust">Maximum Customer / Hour</label>
+          <label for="maxCust">Maximum Customer / Hour: </label>
           <input id="maxCust" type="number" name="max" required>
         </div>
-        
-        <input type="submit">
+        <div class="submitField">
+          <input class="subButton" type="submit">
+        </div>
       </fieldset>
     </form>
 
