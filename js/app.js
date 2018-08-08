@@ -74,3 +74,45 @@ seaShop.displaySale();
 seattleShop.displaySale();
 capitolShop.displaySale();
 alkiShop.displaySale();
+
+var salmon = document.getElementById('salmon');
+// salmon.style.transform = 'rotate(180deg)';
+
+function moveSalmon(){
+  var xPos = 0;
+  var yPos = 0;
+  setInterval(tick, 20);
+
+  var xFlag = true;
+  var yFlag = true;
+
+  function tick(){
+    if (yFlag){
+      yPos++;
+      if(yPos === 15){
+        yFlag = false;
+      }
+    } else{
+      if(yPos === -15){
+        yFlag = true;
+      }
+      yPos--;
+    }
+    if (xFlag){
+      xPos++;
+      if(xPos === window.innerWidth - 170){
+        xFlag = false;
+      }
+    } else{
+      if(xPos === 0){
+        xFlag = true;
+      }
+      xPos--;
+    }
+    salmon.style.left = xPos + 'px';
+    salmon.style.top = yPos + 'px';
+  }
+}
+console.log(window.innerWidth);
+console.log(salmon.clientWidth);
+moveSalmon();

@@ -31,11 +31,12 @@ li {
   height: 900px;
 }
 
-.salmon {
+#salmon {
   max-width: 60%;
   max-height: 60%;
   margin-top: 10px;
   margin-left: 10px;
+  position: absolute;
 }
 
 nav {
