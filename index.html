@@ -14,8 +14,31 @@
   </nav>
   <div class="wrapper">
     <div id="main"></div>
-  </div>
 
+    <form id="shopCreate">
+      <fieldset>
+        <div>
+          <label for="location">Location</label>
+          <input id="location" type="text" name="location" required>
+        </div>
+        <div>
+          <label for="avgSale">Average Cookie Sale</label>
+          <input id="avgSale" type="number" name="sale" step="0.1">
+        </div>
+        <div>
+          <label for="minCust">Minimum Customer / Hour</label>
+          <input id="minCust" type="number" name="min" required>
+        </div>
+        <div>
+          <label for="maxCust">Maximum Customer / Hour</label>
+          <input id="maxCust" type="number" name="max" required>
+        </div>
+        
+        <input type="submit">
+      </fieldset>
+    </form>
+
+  </div>
   <script src="js/app.js"></script>
 </body>
 </html>
