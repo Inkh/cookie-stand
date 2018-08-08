@@ -197,23 +197,63 @@ alkiShop.displayRoster();
 ////////////////////////////////////FORM BLOCK//////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
+var validator = true;
 var form = document.getElementById('shopCreate');
-
 form.addEventListener('submit', function(e){
   e.preventDefault();
-  var newShop = new CookieShop(e.target.location.value, Number(e.target.sale.value), Number(e.target.min.value), Number(e.target.max.value));
-  newShop.currSale = newShop.displaySale();
+  validator = true;
+  var message = document.getElementById('flash');
 
-  salesListArray.push(newShop.currSale);
-  newShop.displayRoster();
-
-  //Remove previous total footer row childs completely
-  while (footer.firstChild){
-    footer.removeChild(footer.firstChild);
+  //Begin input validation
+  var validatorArray = [];
+  if (validator){
+    if (e.target.min.value > e.target.max.value){
+      validatorArray.push('Min value cannot exceed max value');
+    }
+    if(e.target.location.value.length < 3){
+      validatorArray.push('Location name must be at least 2 characters long');
+    }
+    if(!e.target.min.value){
+      validatorArray.push('Must input a value for min customers');
+    }
+    if(!e.target.max.value){
+      validatorArray.push('Must input a value for max customers');
+    }
+    if(!e.target.sale.value){
+      validatorArray.push('Must input a value for average cookie sale');
+    }
+    if (validatorArray.length > 0){
+      validator = false;
+    }
   }
+  // End Validation
 
-  //Re-add updated footer
-  tableFooter();
+  //Execute if input validation passes, else display error message to user
+  if(validator){
+    message.style.color = '#43a046';
+    message.innerHTML = 'Success!';
+    var newShop = new CookieShop(e.target.location.value, Number(e.target.sale.value), Number(e.target.min.value), Number(e.target.max.value));
+    newShop.currSale = newShop.displaySale();
+
+    salesListArray.push(newShop.currSale);
+    newShop.displayRoster();
+
+    //Remove previous total footer row childs completely
+    while (footer.firstChild){
+      footer.removeChild(footer.firstChild);
+    }
+
+    //Re-add updated footer
+    tableFooter();
+
+    //Clear out input forms
+    form.reset();
+
+  } else{
+    var error = validatorArray.join('. ') + '.';
+    message.style.color = '#dd5656';
+    message.innerHTML = error;
+  }
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////

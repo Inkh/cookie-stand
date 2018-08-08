@@ -82,6 +82,7 @@ table {
 }
 
 fieldset{
+  padding: 15px;
   margin: 10px auto;
   width: 55%;
   height: auto;
@@ -121,5 +122,9 @@ input{
 }
 
 .submitField{
+  text-align: center;
+}
+
+#flash{
   text-align: center;
 }
