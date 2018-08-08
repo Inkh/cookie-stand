@@ -91,26 +91,31 @@ capitolShop.currSale = capitolShop.displaySale();
 alkiShop.currSale = alkiShop.displaySale();
 
 //Array of generated lists
-var salesListArray = ['Total', pikeShop.currSale, seaShop.currSale, seattleShop.currSale, capitolShop.currSale, alkiShop.currSale];
+var salesListArray = [pikeShop.currSale, seaShop.currSale, seattleShop.currSale, capitolShop.currSale, alkiShop.currSale];
 
 //Creates footer row for sales table
 function tableFooter(){
   var row = document.createElement('tr');
   var footer = document.createElement('tfoot');
   footer.append(row);
-  var totalList = [];
-  for(var i = 1;i < salesListArray.length;i++){
+  var totalList = ['Total'];
+
+  for(var i = 1;i < 17;i++){
     var total = 0;
-    for(var k = 1;k < salesListArray[i].length;k++){
-      console.log('hi');
+    for(var k = 0;k < salesListArray.length;k++){
       total += salesListArray[k][i];
     }
     totalList.push(total);
   }
 
-  var hourlySale = document.createElement('td');
-  hourlySale.textContent = total;
-  return totalList;
+  for(var j = 0;j < totalList.length;j++){
+    var hourlySale = document.createElement('td');
+    hourlySale.textContent = totalList[j];
+    row.append(hourlySale);
+  }
+  footer.append(row);
+  table.append(footer);
+  // return totalList;
 }
 tableFooter();
 
