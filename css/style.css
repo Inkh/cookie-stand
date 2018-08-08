@@ -1,7 +1,9 @@
 body {
   vertical-align: top;
   font-family: sans-serif;
-  background-color: rgb(197, 194, 194);
+  /* background-color: rgb(197, 194, 194); */
+  min-width:1000px;
+  background: repeating-linear-gradient(45deg, #eb8e59, #eb8e59 43px, #eeeeee 43px, #eeeeee 50px);
 }
 
 ul { 
@@ -12,7 +14,7 @@ ul {
 
 h2 {
   font-size: 24px;
-  margin: 10px;
+  margin: 10px 5px;
 }
 
 li {
@@ -20,27 +22,54 @@ li {
 }
 
 .wrapper {
-  width: 90%;
+  width: 95%;
   background-color: rgb(243, 243, 243);
   margin: 80px auto 0 auto;
   box-sizing: border-box;
   padding: 10px;
   box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.2);
+  /* height: 1000px; */
 }
 
-.salmon {
+#salmon {
   max-width: 60%;
   max-height: 60%;
   margin-top: 10px;
   margin-left: 10px;
+  position: absolute;
 }
 
 nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: rgb(168, 93, 93);
+  /* background-color: #e4964e; */
+  /* background-color: #37944b; */
+  background-color: #329ac4;
   height: 80px;
   margin-bottom: 10px;
-  box-shadow: 0 4px 5px rgb(187, 187, 187);
+  box-shadow: 0 1px 2px #777777;
+}
+
+tr:nth-child(even) {
+  background-color: #dadada;
+}
+
+td, th {
+  border: 1px solid #dadada;
+  text-align: left;
+  padding: 8px;
+  width: 70px;
+  height: 30px;
+}
+
+th {
+  font-weight: bold;
+}
+
+table {
+  max-width: 100%;
+  word-break: normal;
+  word-wrap: break-word;
+  table-layout: fixed;
 }

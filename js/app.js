@@ -2,103 +2,237 @@
 
 console.log('linked');
 
+//Constructor method for Cookie Shop
+function CookieShop(location, averageCookieSale, minCustomerHourly,maxCustomerHourly){
+  this.location = location;
+  this.averageCookieSale = averageCookieSale;
+  this.minCustomerHourly = minCustomerHourly;
+  this.maxCustomerHourly = maxCustomerHourly;
+}
+
 //Generates random customer visited by the hour.
 function randomCustomer(){
   return Math.floor(Math.random() * (this.maxCustomerHourly - this.minCustomerHourly)) + this.minCustomerHourly;
 }
 
-//Cookie sale generation by the hour.
+CookieShop.prototype.averageCustomerHourly = randomCustomer;
+
 function generateSale(){
   var total = 0;
-  var salesSheet = [];
-  var hour = 6;
+  var salesSheet = [this.location];
   for (var i = 0; i < 15;i++){
-    var cookiesSold = Math.ceil(this.averageCustomerHourly() * this.avgCookieSale);
-    if (hour < 12){
-      salesSheet.push(`${hour}am: ${cookiesSold}`);
-    } else{
-      if (hour === 12){
-        salesSheet.push(`${hour}pm: ${cookiesSold}`);
-      } else{
-        salesSheet.push(`${hour - 12}pm: ${cookiesSold}`);
-      }
-    }
+    var cookiesSold = Math.ceil(this.averageCustomerHourly() * this.averageCookieSale);
+    salesSheet.push(cookiesSold);
     total += cookiesSold;
-    hour++;
   }
-  salesSheet.push(`Total: ${total}`);
+  salesSheet.push(total);
   return salesSheet;
 }
 
-//Displays a list of sales by the hour
-function displaySale(){
-  var content = document.getElementById('main');
-  var ul = document.createElement('ul');
-  var header = document.createElement('h2');
-  var headerText = document.createTextNode(this.location);
-  header.append(headerText);
-  content.append(header);
-  for(var i = 0;i < this.generateSale().length;i++){
-    var hourlySale = document.createElement('li');
-    var text = document.createTextNode(this.generateSale()[i]);
-    hourlySale.append(text);
-    ul.append(hourlySale);
-    content.append(ul);
+CookieShop.prototype.generateSale = generateSale;
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////SALES TABLE BLOCK//////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
+
+// Creates basic table template.
+var content = document.getElementById('main');
+
+// Creates title for the table
+var salesTitle = document.createElement('h2');
+salesTitle.textContent = 'Total Sales by hour and location';
+content.append(salesTitle);
+
+//Table Creation for sales
+var table = document.createElement('table');
+
+//Creates header row for sales table
+function tableCreate(){
+  var dailyHours = ['', '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', 'Daily Location Total'];
+  content.append(table);
+  var headerRow = document.createElement('tr');
+  for(var j = 0;j < dailyHours.length; j++){
+    var currHour = document.createElement('th');
+    var text = document.createTextNode(dailyHours[j]);
+    currHour.append(text);
+    headerRow.append(currHour);
+    table.append(headerRow);
   }
 }
 
-var pikeShop = {
-  location: '1st and Pike',
-  avgCookieSale: 6.3,
-  minCustomerHourly: 23,
-  maxCustomerHourly: 87,
-  averageCustomerHourly: randomCustomer,
-  generateSale: generateSale,
-  dailySale: displaySale
-};
+function displaySale(){
+  var row = document.createElement('tr');
+  var list = this.generateSale();
+  for(var i = 0; i < list.length;i++){
+    var hourlySale = document.createElement('td');
+    var text = document.createTextNode(list[i]);
+    hourlySale.append(text);
+    row.append(hourlySale);
+    table.append(row);
+  }
+  return list;
+}
 
-var seaShop = {
-  location: 'SeaTac Airport',
-  avgCookieSale: 1.2,
-  minCustomerHourly: 3,
-  maxCustomerHourly: 24,
-  averageCustomerHourly: randomCustomer,
-  generateSale: generateSale,
-  dailySale: displaySale
-};
+CookieShop.prototype.displaySale = displaySale;
 
-var seattleShop = {
-  location: 'Seattle Center',
-  avgCookieSale: 3.7,
-  minCustomerHourly: 11,
-  maxCustomerHourly: 38,
-  averageCustomerHourly: randomCustomer,
-  generateSale: generateSale,
-  dailySale: displaySale
-};
+var pikeShop = new CookieShop('1st and Pike', 6.3, 23, 87);
+var seaShop = new CookieShop('SeaTac Airport', 1.2, 3, 24);
+var seattleShop = new CookieShop('Seattle Center', 3.7, 11, 38);
+var capitolShop = new CookieShop('Capitol Hill', 2.3, 20, 38);
+var alkiShop = new CookieShop('Alki', 4.6, 2, 16);
 
-var capitolShop = {
-  location: 'Capitol Hill',
-  avgCookieSale: 2.3,
-  minCustomerHourly: 20,
-  maxCustomerHourly: 38,
-  averageCustomerHourly: randomCustomer,
-  generateSale: generateSale,
-  dailySale: displaySale
-};
+tableCreate();
+pikeShop.currSale = pikeShop.displaySale();
+seaShop.currSale = seaShop.displaySale();
+seattleShop.currSale = seattleShop.displaySale();
+capitolShop.currSale = capitolShop.displaySale();
+alkiShop.currSale = alkiShop.displaySale();
 
-var alkiShop = {
-  location: 'Alki',
-  avgCookieSale: 4.6,
-  minCustomerHourly: 2,
-  maxCustomerHourly: 16,
-  averageCustomerHourly: randomCustomer,
-  generateSale: generateSale,
-  dailySale: displaySale
-};
+//Array of generated lists
+var salesListArray = [pikeShop.currSale, seaShop.currSale, seattleShop.currSale, capitolShop.currSale, alkiShop.currSale];
 
-pikeShop.dailySale();
-seaShop.dailySale();
-seattleShop.dailySale();
-capitolShop.dailySale();
-alkiShop.dailySale();
+//Creates footer row for sales table
+function tableFooter(){
+  var row = document.createElement('tr');
+  var footer = document.createElement('tfoot');
+  footer.append(row);
+  var totalList = ['Total'];
+
+  for(var i = 1;i < 17;i++){
+    var total = 0;
+    for(var k = 0;k < salesListArray.length;k++){
+      total += salesListArray[k][i];
+    }
+    totalList.push(total);
+  }
+
+  for(var j = 0;j < totalList.length;j++){
+    var hourlySale = document.createElement('td');
+    hourlySale.textContent = totalList[j];
+    row.append(hourlySale);
+  }
+  footer.append(row);
+  table.append(footer);
+  // return totalList;
+}
+tableFooter();
+
+/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////END SALES TABLE BLOCK////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////TOSSER TABLE BLOCK//////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+
+//Creates array of required tossers per hour
+function requiredTossers(){
+  var tosserList = [this.location];
+  var total = 0;
+  for(var k = 1;k < this.currSale.length - 1;k++){
+    var tosserCount = Math.ceil(this.currSale[k] / 20);
+    tosserList.push(tosserCount);
+    total += tosserCount;
+  }
+  tosserList.push(total);
+  return tosserList;
+}
+
+CookieShop.prototype.requiredTossers = requiredTossers;
+
+// Creates title for the tosser table
+var tosserTitle = document.createElement('h2');
+tosserTitle.textContent = 'Total number of tossers needed by the hour';
+content.append(tosserTitle);
+
+//Table Creation for sales
+var tosserTable = document.createElement('table');
+
+function tosserTableCreate(){
+  var dailyHours = ['', '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', 'Daily Tossers Required'];
+  content.append(tosserTable);
+  var headerRow = document.createElement('tr');
+  for(var j = 0;j < dailyHours.length; j++){
+    var currHour = document.createElement('th');
+    var text = document.createTextNode(dailyHours[j]);
+    currHour.append(text);
+    headerRow.append(currHour);
+    tosserTable.append(headerRow);
+  }
+}
+
+tosserTableCreate();
+
+
+function displayRoster(){
+  var row = document.createElement('tr');
+  for(var i = 0; i < this.requiredTossers().length;i++){
+    var hourlyTosser = document.createElement('td');
+    var text = document.createTextNode(this.requiredTossers()[i]);
+    hourlyTosser.append(text);
+    row.append(hourlyTosser);
+    tosserTable.append(row);
+  }
+}
+
+CookieShop.prototype.displayRoster = displayRoster;
+
+pikeShop.displayRoster();
+seaShop.displayRoster();
+seattleShop.displayRoster();
+capitolShop.displayRoster();
+alkiShop.displayRoster();
+
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////END TOSSER TABLE BLOCK//////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////SALMON ANIMATION BLOCK/////////////////////////////////
+var salmon = document.getElementById('salmon');
+
+function moveSalmon(){
+  var xPos = 0;
+  var yPos = 0;
+  setInterval(tick, 20);
+
+  //Set boundary flags for X and Y coordinates
+  var xFlag = true;
+  var yFlag = true;
+
+  //Function to move salmon across the page. Bounce salmon back when set boundaries are reached
+  function tick(){
+    if (yFlag){
+      yPos++;
+      if(yPos === 15){
+        yFlag = false;
+      }
+    } else{
+      if(yPos === -15){
+        yFlag = true;
+      }
+      yPos--;
+    }
+    if (xFlag){
+      xPos += 3;
+      if(xPos === window.innerWidth - 171){
+        xFlag = false;
+        salmon.src='img/salmonFlip.png';
+      }
+    } else{
+      if(xPos === -3){
+        xFlag = true;
+        salmon.src='img/salmon.png';
+      }
+      xPos -= 3;
+    }
+    salmon.style.left = xPos + 'px';
+    salmon.style.top = yPos + 'px';
+  }
+}
+
+moveSalmon();
+////////////////////////////////END SALMON ANIMATION BLOCK/////////////////////////////
