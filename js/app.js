@@ -32,10 +32,13 @@ function generateSale(){
 CookieShop.prototype.generateSale = generateSale;
 
 
+
+///////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////SALES TABLE BLOCK//////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
+
 // Creates basic table template.
 var content = document.getElementById('main');
-
-////////////////////////////////SALES TABLE BLOCK//////////////////////////////////////
 
 // Creates title for the table
 var salesTitle = document.createElement('h2');
@@ -45,6 +48,7 @@ content.append(salesTitle);
 //Table Creation for sales
 var table = document.createElement('table');
 
+//Creates header row for sales table
 function tableCreate(){
   var dailyHours = ['', '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', 'Daily Location Total'];
   content.append(table);
@@ -57,8 +61,6 @@ function tableCreate(){
     table.append(headerRow);
   }
 }
-
-////////////////////////////////END SALES TABLE BLOCK////////////////////////////////
 
 function displaySale(){
   var row = document.createElement('tr');
@@ -88,9 +90,38 @@ seattleShop.currSale = seattleShop.displaySale();
 capitolShop.currSale = capitolShop.displaySale();
 alkiShop.currSale = alkiShop.displaySale();
 
+//Array of generated lists
+var salesListArray = ['Total', pikeShop.currSale, seaShop.currSale, seattleShop.currSale, capitolShop.currSale, alkiShop.currSale];
+
+//Creates footer row for sales table
+function tableFooter(){
+  var row = document.createElement('tr');
+  var footer = document.createElement('tfoot');
+  footer.append(row);
+  var totalList = [];
+  for(var i = 1;i < salesListArray.length;i++){
+    var total = 0;
+    for(var k = 1;k < salesListArray[i].length;k++){
+      console.log('hi');
+      total += salesListArray[k][i];
+    }
+    totalList.push(total);
+  }
+
+  var hourlySale = document.createElement('td');
+  hourlySale.textContent = total;
+  return totalList;
+}
+tableFooter();
+
+/////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////END SALES TABLE BLOCK////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 
 
+////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////TOSSER TABLE BLOCK//////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
 
 //Creates array of required tossers per hour
 function requiredTossers(){
@@ -149,7 +180,10 @@ seaShop.displayRoster();
 seattleShop.displayRoster();
 capitolShop.displayRoster();
 alkiShop.displayRoster();
+
+////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////END TOSSER TABLE BLOCK//////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
 
 
 ////////////////////////////////SALMON ANIMATION BLOCK/////////////////////////////////
