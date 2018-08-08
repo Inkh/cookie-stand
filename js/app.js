@@ -34,6 +34,15 @@ CookieShop.prototype.generateSale = generateSale;
 
 // Creates basic table template.
 var content = document.getElementById('main');
+
+////////////////////////////////SALES TABLE BLOCK//////////////////////////////////////
+
+// Creates title for the table
+var salesTitle = document.createElement('h2');
+salesTitle.textContent = 'Total Sales by hour and location';
+content.append(salesTitle);
+
+//Table Creation for sales
 var table = document.createElement('table');
 
 function tableCreate(){
@@ -49,15 +58,19 @@ function tableCreate(){
   }
 }
 
+////////////////////////////////END SALES TABLE BLOCK////////////////////////////////
+
 function displaySale(){
   var row = document.createElement('tr');
-  for(var i = 0; i < this.generateSale().length;i++){
+  var list = this.generateSale();
+  for(var i = 0; i < list.length;i++){
     var hourlySale = document.createElement('td');
-    var text = document.createTextNode(this.generateSale()[i]);
+    var text = document.createTextNode(list[i]);
     hourlySale.append(text);
     row.append(hourlySale);
     table.append(row);
   }
+  return list;
 }
 
 CookieShop.prototype.displaySale = displaySale;
@@ -69,23 +82,89 @@ var capitolShop = new CookieShop('Capitol Hill', 2.3, 20, 38);
 var alkiShop = new CookieShop('Alki', 4.6, 2, 16);
 
 tableCreate();
-pikeShop.displaySale();
-seaShop.displaySale();
-seattleShop.displaySale();
-capitolShop.displaySale();
-alkiShop.displaySale();
+pikeShop.currSale = pikeShop.displaySale();
+seaShop.currSale = seaShop.displaySale();
+seattleShop.currSale = seattleShop.displaySale();
+capitolShop.currSale = capitolShop.displaySale();
+alkiShop.currSale = alkiShop.displaySale();
 
+
+
+////////////////////////////////TOSSER TABLE BLOCK//////////////////////////////////////
+
+//Creates array of required tossers per hour
+function requiredTossers(){
+  var tosserList = [this.location];
+  var total = 0;
+  for(var k = 1;k < this.currSale.length - 1;k++){
+    var tosserCount = Math.ceil(this.currSale[k] / 20);
+    tosserList.push(tosserCount);
+    total += tosserCount;
+  }
+  tosserList.push(total);
+  return tosserList;
+}
+
+CookieShop.prototype.requiredTossers = requiredTossers;
+
+// Creates title for the tosser table
+var tosserTitle = document.createElement('h2');
+tosserTitle.textContent = 'Total number of tossers needed by the hour';
+content.append(tosserTitle);
+
+//Table Creation for sales
+var tosserTable = document.createElement('table');
+
+function tosserTableCreate(){
+  var dailyHours = ['', '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', 'Daily Tossers Required'];
+  content.append(tosserTable);
+  var headerRow = document.createElement('tr');
+  for(var j = 0;j < dailyHours.length; j++){
+    var currHour = document.createElement('th');
+    var text = document.createTextNode(dailyHours[j]);
+    currHour.append(text);
+    headerRow.append(currHour);
+    tosserTable.append(headerRow);
+  }
+}
+
+tosserTableCreate();
+
+
+function displayRoster(){
+  var row = document.createElement('tr');
+  for(var i = 0; i < this.requiredTossers().length;i++){
+    var hourlyTosser = document.createElement('td');
+    var text = document.createTextNode(this.requiredTossers()[i]);
+    hourlyTosser.append(text);
+    row.append(hourlyTosser);
+    tosserTable.append(row);
+  }
+}
+
+CookieShop.prototype.displayRoster = displayRoster;
+
+pikeShop.displayRoster();
+seaShop.displayRoster();
+seattleShop.displayRoster();
+capitolShop.displayRoster();
+alkiShop.displayRoster();
+////////////////////////////////END TOSSER TABLE BLOCK//////////////////////////////////
+
+
+////////////////////////////////SALMON ANIMATION BLOCK/////////////////////////////////
 var salmon = document.getElementById('salmon');
-// salmon.style.transform = 'rotate(180deg)';
 
 function moveSalmon(){
   var xPos = 0;
   var yPos = 0;
   setInterval(tick, 20);
 
+  //Set boundary flags for X and Y coordinates
   var xFlag = true;
   var yFlag = true;
 
+  //Function to move salmon across the page. Bounce salmon back when set boundaries are reached
   function tick(){
     if (yFlag){
       yPos++;
@@ -99,20 +178,22 @@ function moveSalmon(){
       yPos--;
     }
     if (xFlag){
-      xPos++;
-      if(xPos === window.innerWidth - 170){
+      xPos += 3;
+      if(xPos === window.innerWidth - 171){
         xFlag = false;
+        salmon.src='img/salmonFlip.png';
       }
     } else{
-      if(xPos === 0){
+      if(xPos === -3){
         xFlag = true;
+        salmon.src='img/salmon.png';
       }
-      xPos--;
+      xPos -= 3;
     }
     salmon.style.left = xPos + 'px';
     salmon.style.top = yPos + 'px';
   }
 }
-console.log(window.innerWidth);
-console.log(salmon.clientWidth);
+
 moveSalmon();
+////////////////////////////////END SALMON ANIMATION BLOCK/////////////////////////////

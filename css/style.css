@@ -14,7 +14,7 @@ ul {
 
 h2 {
   font-size: 24px;
-  margin: 10px;
+  margin: 10px 5px;
 }
 
 li {
@@ -28,7 +28,7 @@ li {
   box-sizing: border-box;
   padding: 10px;
   box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.2);
-  height: 900px;
+  height: 1000px;
 }
 
 #salmon {
@@ -44,10 +44,11 @@ nav {
   top: 0;
   width: 100%;
   /* background-color: #e4964e; */
-  background-color: #37944b;
+  /* background-color: #37944b; */
+  background-color: #329ac4;
   height: 80px;
   margin-bottom: 10px;
-  box-shadow: 0 4px 5px #eeeeee;
+  box-shadow: 0 1px 2px #777777;
 }
 
 tr:nth-child(even) {
