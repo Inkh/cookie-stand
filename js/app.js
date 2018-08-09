@@ -264,7 +264,8 @@ form.addEventListener('submit', function(e){
 ///////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////SALMON ANIMATION BLOCK/////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
-var salmon = document.getElementById('salmon');
+var salmon = document.getElementsByClassName('salmon')[0];
+console.log(salmon);
 
 function moveSalmon(){
   var xPos = 0;
@@ -295,7 +296,7 @@ function moveSalmon(){
         salmon.src='img/salmonFlip.png';
       }
     } else{
-      if(xPos === -3){
+      if(xPos <= -3){
         xFlag = true;
         salmon.src='img/salmon.png';
       }
