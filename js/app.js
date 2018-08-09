@@ -92,11 +92,12 @@ alkiShop.currSale = alkiShop.displaySale();
 
 //Array of generated lists
 var salesListArray = [pikeShop.currSale, seaShop.currSale, seattleShop.currSale, capitolShop.currSale, alkiShop.currSale];
+var footer = document.createElement('tfoot');
 
 //Creates footer row for sales table
 function tableFooter(){
+  console.log('appending');
   var row = document.createElement('tr');
-  var footer = document.createElement('tfoot');
   footer.append(row);
   var totalList = ['Total'];
 
@@ -117,6 +118,7 @@ function tableFooter(){
   table.append(footer);
   // return totalList;
 }
+
 tableFooter();
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -191,8 +193,79 @@ alkiShop.displayRoster();
 ////////////////////////////////////////////////////////////////////////////////////////
 
 
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////FORM BLOCK//////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+
+var validator = true;
+var form = document.getElementById('shopCreate');
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  validator = true;
+  var message = document.getElementById('flash');
+
+  //Begin input validation
+  var validatorArray = [];
+  if (validator){
+    if (e.target.min.value > e.target.max.value){
+      validatorArray.push('Min value cannot exceed max value');
+    }
+    if(e.target.location.value.length < 3){
+      validatorArray.push('Location name must be at least 2 characters long');
+    }
+    if(!e.target.min.value){
+      validatorArray.push('Must input a value for min customers');
+    }
+    if(!e.target.max.value){
+      validatorArray.push('Must input a value for max customers');
+    }
+    if(!e.target.sale.value){
+      validatorArray.push('Must input a value for average cookie sale');
+    }
+    if (validatorArray.length > 0){
+      validator = false;
+    }
+  }
+  // End Validation
+
+  //Execute if input validation passes, else display error message to user
+  if(validator){
+    message.style.color = '#43a046';
+    message.innerHTML = 'Success!';
+    var newShop = new CookieShop(e.target.location.value, Number(e.target.sale.value), Number(e.target.min.value), Number(e.target.max.value));
+    newShop.currSale = newShop.displaySale();
+
+    salesListArray.push(newShop.currSale);
+    newShop.displayRoster();
+
+    //Remove previous total footer row childs completely
+    while (footer.firstChild){
+      footer.removeChild(footer.firstChild);
+    }
+
+    //Re-add updated footer
+    tableFooter();
+
+    //Clear out input forms
+    form.reset();
+
+  } else{
+    var error = validatorArray.join('. ') + '.';
+    message.style.color = '#dd5656';
+    message.innerHTML = error;
+  }
+});
+
+////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////END FORM BLOCK//////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+///////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////SALMON ANIMATION BLOCK/////////////////////////////////
-var salmon = document.getElementById('salmon');
+///////////////////////////////////////////////////////////////////////////////////////
+var salmon = document.getElementsByClassName('salmon')[0];
+console.log(salmon);
 
 function moveSalmon(){
   var xPos = 0;
@@ -218,12 +291,12 @@ function moveSalmon(){
     }
     if (xFlag){
       xPos += 3;
-      if(xPos === window.innerWidth - 171){
+      if(xPos >= window.innerWidth - 171){
         xFlag = false;
         salmon.src='img/salmonFlip.png';
       }
     } else{
-      if(xPos === -3){
+      if(xPos <= -3){
         xFlag = true;
         salmon.src='img/salmon.png';
       }
@@ -235,4 +308,7 @@ function moveSalmon(){
 }
 
 moveSalmon();
+
+///////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////END SALMON ANIMATION BLOCK/////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
