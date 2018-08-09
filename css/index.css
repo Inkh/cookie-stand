@@ -1,0 +1,99 @@
+body {
+  vertical-align: top;
+  font-family: sans-serif;
+  min-width:1000px;
+  /* background: repeating-linear-gradient(45deg, #eb8e59, #eb8e59 43px, #eeeeee 43px, #eeeeee 50px); */
+}
+
+header {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  background-color: #329ac4;
+  height: 80px;
+  box-shadow: 0 1px 2px #777777;
+}
+h2 {
+  font-size: 36px;
+  font-family: 'Arizonia', cursive, sans-serif;
+  color: #eeeeee;
+}
+nav {
+  position: fixed;
+  top: 80px;
+  width: 100%;
+  background-color: #e7e8e9;
+  height: 50px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 2px #777777;
+}
+
+footer{
+  /* margin-top: 20px; */
+  height: 80px;
+  background-color: #1a4f64
+}
+
+/* Tentative style, will change later */
+.indexSalmon{
+  width: 394px;
+  height: 123px;
+  margin-top: 10px;
+  margin-left: 10px;
+  position: absolute;
+  z-index: 1;
+}
+
+/* Temp */
+.pending{
+  font-size: 36px;
+  margin: 10px;
+  /* text-align: center; */
+  font-weight: bold;
+  /* display: inline;  */
+}
+
+/* Temp */
+.dots {
+  font-size: 36px;
+  margin: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.refer{
+  text-decoration: none;
+  color: #eeeeee;
+  margin: 20px 20px;
+  border: none;
+  background-color: #43a046;
+  height: 40px;
+  font-size: 18px;
+  padding: 10px;
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: center;
+}
+
+.refer:hover {
+  background-color: #46ac4a;
+  cursor: pointer;
+  box-shadow: 0 1px 2px #777777;
+}
+
+.wrapper {
+  width: 95%;
+  background-color: #eeeeee;
+  margin: 120px auto 0 auto;
+  box-sizing: border-box;
+  padding: 10px;
+  box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.2);
+  /* tentative height */
+  /* height: 1000px; */
+
+}
+
+.background {
+  background: repeating-linear-gradient(45deg, #eb8e59, #eb8e59 43px, #eeeeee 43px, #eeeeee 50px);
+  height: auto;
+}
