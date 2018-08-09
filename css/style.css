@@ -98,16 +98,23 @@ fieldset{
   border: 2px solid #e0dfdf;
 }
 
-label{
+/* label{
   float: left;
   clear: left;
   text-align: right;
   width: 250px;
   margin: 14px;
+} */
+
+label {
+  /* margin: 0px auto; */
+  display: inline-block;
+  width: 210px;
+  text-align: right;
 }
 
 input{
-  float:left;
+  /* float:left; */
   margin: 10px;
   width: 200px;
   height: 20px;
@@ -143,7 +150,7 @@ input{
 .inputField{
   text-align: center;
   width: 100%;
-  padding-left: 10%;
+  /* padding-left: 10%; */
 }
 
 /* Tentative style, will change later */
