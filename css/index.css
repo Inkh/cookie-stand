@@ -11,7 +11,7 @@ header {
   width: 100%;
   /* background-color: #329ac4; */
   background-color: #1a4f64;
-  height: 80px;
+  height: 120px;
   box-shadow: 0 1px 2px #777777;
   text-align: center;
   /* vertical-align: middle; */
@@ -20,7 +20,8 @@ h2 {
   font-size: 42px;
   font-family: 'Arizonia', cursive, sans-serif;
   color: #eeeeee;
-  margin: 12px auto 1px auto;
+  margin: 0px auto 1px auto;
+  /* display: inline; */
 }
 
 header p {
@@ -33,7 +34,7 @@ header p {
 
 nav {
   position: fixed;
-  top: 80px;
+  top: 120px;
   width: 100%;
   background-color: #d0d1d1;
   height: 50px;
@@ -57,6 +58,11 @@ footer{
   background-color: #1a4f64;
 }
 
+.logo {
+  margin-top: 5px;
+  max-width: 35%;
+  max-height: 35%;
+}
 /* Tentative style, will change later */
 .indexSalmon{
   width: 394px;
@@ -107,7 +113,7 @@ footer{
 .wrapper {
   width: 95%;
   background-color: #e4cfa8;
-  margin: 120px auto 0 auto;
+  margin: 160px auto 0 auto;
   box-sizing: border-box;
   padding: 10px;
   box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.2);
@@ -117,6 +123,6 @@ footer{
 }
 
 .background {
-  background: repeating-linear-gradient(45deg, #eb8e59, #eb8e59 43px, #eeeeee 43px, #eeeeee 50px);
+  background: repeating-linear-gradient(45deg, #d6705e, #d6705e 43px, #eeeeee 43px, #eeeeee 50px);
   height: auto;
 }
