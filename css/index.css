@@ -223,7 +223,7 @@ footer{
   background-color: #eeeeee;
   background-image: url('../img/family.jpg');
   background-size: cover;
-  height: 450px;
+  height: 470px;
   background-position: center;
 }
 
@@ -231,6 +231,7 @@ footer{
   width: 100%;
   background-color: #2e1f00;
   display: inline-block;
+  height: auto;
 }
 
 .storyText {
@@ -243,6 +244,9 @@ footer{
 }
 
 .storyText p {
+  box-sizing: border-box;
+  overflow: hidden;
+  height: 100%;
   line-height: 1.5;
   margin-top: 60px;
   color: #bdbbbb;

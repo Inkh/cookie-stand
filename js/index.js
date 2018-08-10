@@ -213,7 +213,25 @@ function cardCreation(){
 ///////////////////////////////////////////////////////////////////////////////////////
 var salmon = document.getElementsByClassName('indexSalmon')[0];
 
+var escapeTick = 0;
 function moveSalmon(){
+  salmon.addEventListener('mouseover', function(){
+    salmon.src = 'img/salmon.png';
+    var fishEscape = setInterval(escape, 1);
+    function escape(){
+      if(escapeTick === 200){
+        clearInterval(fishEscape);
+        escapeTick = 0;
+      }
+      xPos += 2;
+      yPos += 1;
+      salmon.style.left = xPos + 'px';
+      salmon.style.top = yPos + 'px';
+      escapeTick++;
+
+    }
+  });
+
   var xPos = 0;
   var yPos = 0;
   setInterval(tick, 20);
@@ -237,7 +255,7 @@ function moveSalmon(){
     }
     if (xFlag){
       xPos += 3;
-      if(xPos >= window.innerWidth - 394){
+      if(xPos >= window.innerWidth - 62){
         xFlag = false;
         salmon.src='img/salmonFlip.png';
       }
@@ -254,6 +272,8 @@ function moveSalmon(){
 }
 
 moveSalmon();
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////END SALMON ANIMATION BLOCK/////////////////////////////
