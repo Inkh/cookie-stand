@@ -9,12 +9,9 @@ header {
   position: fixed;
   top: 0px;
   width: 100%;
-  /* background-color: #329ac4; */
   background-color: #1a4f64;
   height: 120px;
-  box-shadow: 0 1px 2px #777777;
   text-align: center;
-  /* vertical-align: middle; */
 }
 h2 {
   font-size: 42px;
@@ -46,16 +43,24 @@ nav ul {
   text-align: center;
 }
 
-li {
+nav ul li {
   display: inline-block;
   width: 20%;
   margin: 17px auto;
+  color: #0f2f3b;
+  font-weight: bold;
+}
+
+nav ul li:hover {
+  cursor: pointer;
+  color: #126d91;
 }
 
 footer{
-  margin-top: 20px;
+  /* margin-top: 20px; */
   height: 80px;
   background-color: #1a4f64;
+  box-shadow: 0 -0.5px 2px #777777;
 }
 
 .logo {
@@ -65,8 +70,8 @@ footer{
 }
 /* Tentative style, will change later */
 .indexSalmon{
-  width: 394px;
-  height: 123px;
+  width: 197px;
+  height: 62px;
   margin-top: 10px;
   margin-left: 10px;
   position: absolute;
