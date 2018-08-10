@@ -31,6 +31,12 @@ loc.addEventListener('click', function(){
 
 merchandise.addEventListener('click', function(){
   clearNode();
+  var ruler = document.createElement('div');
+  ruler.className = 'ruler';
+  var header = document.createElement('h1');
+  header.textContent = 'Our current Merchandise. More to come soon!';
+  content.append(header);
+  content.append(ruler);
   cardCreation();
 });
 
@@ -38,6 +44,7 @@ merchandise.addEventListener('click', function(){
 ///////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////PRODUCT CONSTRUCTION BLOCK/////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
+
 var merchList = [];
 
 function Merchandise(img, title, desc, price){
