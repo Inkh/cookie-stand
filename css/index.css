@@ -15,6 +15,7 @@ header {
 }
 
 h1 {
+  /* margin-top: 180px; */
   font-size: 42px;
   font-family: 'Poppins', sans-serif;
 }
@@ -212,7 +213,45 @@ footer{
 .ruler {
   height: 1px;
   width: 80%;
-  /* background-color: black; */
   background-image: linear-gradient(to right, #dbc79f, #2b0d00, #dbc79f);
   display: inline-block;
+}
+
+.patPic {
+  float: right;
+  width: 38%;
+  background-color: #eeeeee;
+  background-image: url('../img/family.jpg');
+  background-size: cover;
+  height: 450px;
+  background-position: center;
+}
+
+.storyWrapper {
+  width: 100%;
+  background-color: #2e1f00;
+  display: inline-block;
+}
+
+.storyText {
+  vertical-align: top;
+  display: inline-block;
+  width: 25%;
+  height: 350px;
+  margin: 20px;
+  text-align: left;
+}
+
+.storyText p {
+  line-height: 1.5;
+  margin-top: 60px;
+  color: #bdbbbb;
+  text-align: left;
+}
+
+.storyText h3 {
+  font-size: 24px;
+  color: #eeeeee;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: bold;
 }
