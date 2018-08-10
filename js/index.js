@@ -1,5 +1,33 @@
 'use strict';
 
+// Grabs each li when clicked
+var story = document.getElementsByClassName('story')[0];
+var loc = document.getElementsByClassName('location')[0];
+var merchandise = document.getElementsByClassName('merchandise')[0];
+var sales = document.getElementsByClassName('sales')[0];
+var content = document.getElementsByClassName('content')[0];
+
+story.addEventListener('click', function(){
+  content.innerHTML = 'Story';
+});
+
+sales.addEventListener('click', function(){
+  var response = prompt('Input password');
+  if (response === 'salmon'){
+    window.location = 'sales.html';
+  } else {
+    alert('Wrong');
+  }
+});
+
+loc.addEventListener('click', function(){
+
+});
+
+merchandise.addEventListener('click', function(){
+
+});
+
 ///////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////SALMON ANIMATION BLOCK/////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
