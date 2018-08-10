@@ -128,7 +128,7 @@ footer{
 }
 
 .background {
-  background: repeating-linear-gradient(45deg, #d6705e, #d6705e 43px, #eeeeee 43px, #eeeeee 50px);
+  background: repeating-linear-gradient(45deg, #d17768, #d17768 43px, #eeeeee 43px, #eeeeee 50px);
   height: auto;
 }
 
@@ -149,7 +149,7 @@ footer{
   height: 200px;
   background-image: url('../img/shirt.jpg');
   background-size: cover;
-  border-radius: 5px;
+  border-radius: 4px 4px 0 0;
 }
 
 .card-title {

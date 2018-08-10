@@ -12,12 +12,7 @@ story.addEventListener('click', function(){
 });
 
 sales.addEventListener('click', function(){
-  var response = prompt('Input password');
-  if (response === 'salmon'){
-    window.location = 'sales.html';
-  } else {
-    alert('Wrong');
-  }
+  window.location = 'sales.html';
 });
 
 loc.addEventListener('click', function(){
