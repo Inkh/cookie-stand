@@ -259,3 +259,17 @@ footer{
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: bold;
 }
+
+.locationCard {
+  text-align: center;
+  background-color: #eeeeee;
+  width: 270px;
+  height: 30px;
+  border: 1px solid #a7a5a5;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px #8a8989;
+  /* display: ; */
+  margin: 20px auto;
+  padding: 5px;
+  box-sizing: border-box;
+}

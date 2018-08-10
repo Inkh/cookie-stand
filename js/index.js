@@ -27,7 +27,15 @@ sales.addEventListener('click', function(){
 });
 
 loc.addEventListener('click', function(){
+  clearNode();
+  var ruler = document.createElement('div');
+  ruler.className = 'ruler';
+  var header = document.createElement('h1');
+  header.textContent = 'All locations operate 6:00 am - 8:00pm daily';
+  content.append(header);
+  content.append(ruler);
 
+  createLocation();
 });
 
 merchandise.addEventListener('click', function(){
@@ -40,6 +48,30 @@ merchandise.addEventListener('click', function(){
   content.append(ruler);
   cardCreation();
 });
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////LOCATION BLOCK/////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
+
+function createLocation(){
+  var locList = ['1st and Pike', 'SeaTac Airport', 'Seattle Center', 'Capitol Hill', 'Alki'];
+  for (var i = 0; i < locList.length;i++){
+    var card = document.createElement('div');
+    card.className = 'locationCard';
+    var location = document.createElement('h3');
+    location.textContent = locList[i];
+    card.append(location);
+    content.append(card);
+  }
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////END LOCATION BLOCK/////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
+
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////
