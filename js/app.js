@@ -1,5 +1,20 @@
 'use strict';
 
+/*
+    ,                           .::.
+                             .;:**'            
+                              `                  
+  .:XHHHHk.              db.   .;;.     dH  MX   
+oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN
+QMMMMMb  "MMX       MMMMMMP !MX' :M~   MMM MMM  .oo. XMMM 'MMM
+  `MMMM.  )M> :X!Hk. MMMM   XMM.o"  .  MMMMMMM X?XMMM MMM>!MMP
+   'MMMb.dM! XM M'?M MMMMMX.`MMMMMMMM~ MM MMM XM `" MX MMXXMM
+    ~MMMMM~ XMM. .XM XM`"MMMb.~*?**~ .MMX M t MMbooMM XMMMMMP
+     ?MMM>  YMMMMMM! MM   `?MMRb.    `"""   !L"MMMMM XM IMMM
+      MMMX   "MMMM"  MM       ~%:           !Mh.""" dMI IMMP
+      'MMM.                                             IMX
+       ~M!M                                             IMP
+*/
 console.log('linked');
 
 //Constructor method for Cookie Shop
@@ -165,6 +180,39 @@ function tosserTableCreate(){
     tosserTable.append(headerRow);
   }
 }
+
+/*
+                   _,........_
+               _.-'    ___    `-._
+            ,-'      ,'   \       `.
+ _,...    ,'      ,-'     |  ,""":`._.
+/     `--+.   _,.'      _.',',|"|  ` \`
+\_         `"'     _,-"'  | / `-'   l L\
+  `"---.._      ,-"       | l       | | |
+      /   `.   |          ' `.     ,' ; |
+     j     |   |           `._`"""' ,'  |__
+     |      `--'____          `----'    .' `.
+     |    _,-"""    `-.                 |    \
+     l   /             `.               F     l
+      `./     __..._     `.           ,'      |
+        |  ,-"      `.    | ._     _.'        |
+        . j           \   j   /`"""      __   |          ,"`.
+         `|           | _,.__ |        ,'  `. |          |   |
+          `-._       /-'     `L       .     , '          |   |
+              F-...-'          `      |    , /           |   |
+              |            ,----.     `...' /            |   |
+              .--.        j      l        ,'             |   j
+             j    L       |      |'-...--<               .  /
+             `     |       . __,,_    ..  |               \/
+              `-..'.._  __,-'     \  |  |/`._           ,'`
+                  |   ""       .--`. `--,  ,-`..____..,'   |
+                   L          /     \ _.  |   | \  .-.\    j
+                  .'._        l     .\    `---' |  |  || ,'
+                   .  `..____,-.._.'  `._       |  `--;"I'
+                    `--"' `.            ,`-..._/__,.-1,'
+                            `-.__  __,.'     ,' ,' _-'
+                                 `'...___..`'--^--' mh
+*/
 
 tosserTableCreate();
 
