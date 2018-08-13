@@ -288,7 +288,7 @@ function moveSalmon(){
   function tick(){
     if (yFlag){
       yPos++;
-      if(yPos >= window.innerHeight - 123){
+      if(yPos >= window.innerHeight - 80){
         yFlag = false;
       }
     } else{
@@ -299,7 +299,7 @@ function moveSalmon(){
     }
     if (xFlag){
       xPos += 3;
-      if(xPos >= window.innerWidth - 62){
+      if(xPos >= window.innerWidth - 210){
         xFlag = false;
         salmon.src='img/salmonFlip.png';
       }
