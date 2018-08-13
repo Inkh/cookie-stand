@@ -1,5 +1,8 @@
 'use strict';
 
+console.log(y);
+
+var y = 7;
 var content = document.getElementsByClassName('content')[0];
 
 //Clear childNodes
@@ -55,13 +58,16 @@ merchandise.addEventListener('click', function(){
 ///////////////////////////////////////////////////////////////////////////////////////
 
 function createLocation(){
-  var locList = ['1st and Pike', 'SeaTac Airport', 'Seattle Center', 'Capitol Hill', 'Alki'];
+  var locList = [['1st and Pike', '(123)-456-789'], ['SeaTac Airport', '(748)-998-2201'], ['Seattle Center', '(999)-888-777'], ['Capitol Hill', '(288)252-520'], ['Alki', '(987)-654-321']];
   for (var i = 0; i < locList.length;i++){
     var card = document.createElement('div');
     card.className = 'locationCard';
     var location = document.createElement('h3');
-    location.textContent = locList[i];
+    location.textContent = locList[i][0];
+    var number = document.createElement('p');
+    number.textContent = locList[i][1];
     card.append(location);
+    card.append(number);
     content.append(card);
   }
 }
@@ -164,7 +170,7 @@ function Merchandise(img, title, desc, price){
 }
 
 //Shirt
-new Merchandise('img/shirt-01.png', 'Salmon Tee', 'Purchase a t-shirt and show your support to the hard working people that are environmentally aware! All proceeds help us maintain the high quality standards we uphold.', 'Add to Cart: $15');
+new Merchandise('img/shirt.jpg', 'Salmon Tee', 'Purchase a t-shirt and show your support to the hard working people that are environmentally aware! All proceeds help us maintain the high quality standards we uphold.', 'Add to Cart: $15');
 
 //Cutter
 new Merchandise('img/cutter.jpeg', 'Cookie Cutter', 'Want to make your own cookies that resemble our delicious and savory products? Grab one now for yourself!', 'Add to Cart: $5');
@@ -248,15 +254,24 @@ var salmon = document.getElementsByClassName('indexSalmon')[0];
 var escapeTick = 0;
 function moveSalmon(){
   salmon.addEventListener('mouseover', function(){
-    salmon.src = 'img/salmon.png';
+    console.log('hi');
+    // salmon.src = 'img/salmon.png';
     var fishEscape = setInterval(escape, 1);
     function escape(){
+      console.log('escapo');
       if(escapeTick === 200){
         clearInterval(fishEscape);
         escapeTick = 0;
       }
-      xPos += 2;
-      yPos += 1;
+      if (salmon.getAttribute('src') === 'img/salmon.png'){
+        xPos += 2;
+        yPos += 1;
+      }
+      if (salmon.getAttribute('src') === 'img/salmonFlip.png') {
+        console.log('left');
+        xPos -= 2;
+        yPos -= 1;
+      }
       salmon.style.left = xPos + 'px';
       salmon.style.top = yPos + 'px';
       escapeTick++;
@@ -276,7 +291,7 @@ function moveSalmon(){
   function tick(){
     if (yFlag){
       yPos++;
-      if(yPos >= window.innerHeight - 123){
+      if(yPos >= window.innerHeight - 80){
         yFlag = false;
       }
     } else{
@@ -287,7 +302,7 @@ function moveSalmon(){
     }
     if (xFlag){
       xPos += 3;
-      if(xPos >= window.innerWidth - 62){
+      if(xPos >= window.innerWidth - 210){
         xFlag = false;
         salmon.src='img/salmonFlip.png';
       }
@@ -301,6 +316,7 @@ function moveSalmon(){
     salmon.style.left = xPos + 'px';
     salmon.style.top = yPos + 'px';
   }
+  console.log(salmon.src);
 }
 
 moveSalmon();
