@@ -58,13 +58,16 @@ merchandise.addEventListener('click', function(){
 ///////////////////////////////////////////////////////////////////////////////////////
 
 function createLocation(){
-  var locList = ['1st and Pike', 'SeaTac Airport', 'Seattle Center', 'Capitol Hill', 'Alki'];
+  var locList = [['1st and Pike', '(123)-456-789'], ['SeaTac Airport', '(748)-998-2201'], ['Seattle Center', '(999)-888-777'], ['Capitol Hill', '(288)252-520'], ['Alki', '(987)-654-321']];
   for (var i = 0; i < locList.length;i++){
     var card = document.createElement('div');
     card.className = 'locationCard';
     var location = document.createElement('h3');
-    location.textContent = locList[i];
+    location.textContent = locList[i][0];
+    var number = document.createElement('p');
+    number.textContent = locList[i][1];
     card.append(location);
+    card.append(number);
     content.append(card);
   }
 }

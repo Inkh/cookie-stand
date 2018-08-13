@@ -264,7 +264,7 @@ footer{
   text-align: center;
   background-color: #eeeeee;
   width: 270px;
-  height: 30px;
+  height: auto;
   border: 1px solid #a7a5a5;
   border-radius: 5px;
   box-shadow: 0 1px 2px #8a8989;
@@ -272,4 +272,14 @@ footer{
   margin: 20px auto;
   padding: 5px;
   box-sizing: border-box;
+}
+
+.locationCard p {
+  font-family: 'Raleway', sans-serif;
+  margin: 5px;
+}
+
+.locationCard h3 {
+  color: #724e01;
+  margin-top: 5px;
 }
