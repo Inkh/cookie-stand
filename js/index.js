@@ -1,5 +1,8 @@
 'use strict';
 
+console.log(y);
+
+var y = 7;
 var content = document.getElementsByClassName('content')[0];
 
 //Clear childNodes
@@ -164,7 +167,7 @@ function Merchandise(img, title, desc, price){
 }
 
 //Shirt
-new Merchandise('img/shirt-01.png', 'Salmon Tee', 'Purchase a t-shirt and show your support to the hard working people that are environmentally aware! All proceeds help us maintain the high quality standards we uphold.', 'Add to Cart: $15');
+new Merchandise('img/shirt.jpg', 'Salmon Tee', 'Purchase a t-shirt and show your support to the hard working people that are environmentally aware! All proceeds help us maintain the high quality standards we uphold.', 'Add to Cart: $15');
 
 //Cutter
 new Merchandise('img/cutter.jpeg', 'Cookie Cutter', 'Want to make your own cookies that resemble our delicious and savory products? Grab one now for yourself!', 'Add to Cart: $5');
@@ -248,15 +251,24 @@ var salmon = document.getElementsByClassName('indexSalmon')[0];
 var escapeTick = 0;
 function moveSalmon(){
   salmon.addEventListener('mouseover', function(){
-    salmon.src = 'img/salmon.png';
+    console.log('hi');
+    // salmon.src = 'img/salmon.png';
     var fishEscape = setInterval(escape, 1);
     function escape(){
+      console.log('escapo');
       if(escapeTick === 200){
         clearInterval(fishEscape);
         escapeTick = 0;
       }
-      xPos += 2;
-      yPos += 1;
+      if (salmon.getAttribute('src') === 'img/salmon.png'){
+        xPos += 2;
+        yPos += 1;
+      }
+      if (salmon.getAttribute('src') === 'img/salmonFlip.png') {
+        console.log('left');
+        xPos -= 2;
+        yPos -= 1;
+      }
       salmon.style.left = xPos + 'px';
       salmon.style.top = yPos + 'px';
       escapeTick++;
@@ -301,6 +313,7 @@ function moveSalmon(){
     salmon.style.left = xPos + 'px';
     salmon.style.top = yPos + 'px';
   }
+  console.log(salmon.src);
 }
 
 moveSalmon();
